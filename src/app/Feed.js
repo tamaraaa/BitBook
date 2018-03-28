@@ -37,6 +37,8 @@ export class Feed extends Component {
         return (
             <div className="container">
                 {this.state.posts.map((post) => <FeedItem key={post.id} post={post} />)}
+
+
             </div>
         )
 

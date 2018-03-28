@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 export const Header = () => {
     return (
         <header className="container">
-            <nav>
+
+            <nav className="col-s12">
+
                 <div className="nav-wrapper">
+
                     <Link to="#" className="brand-logo">BITBOOK</Link>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
 
