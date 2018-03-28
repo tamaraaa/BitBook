@@ -9,21 +9,23 @@ export class FeedItem extends Component {
     }
 
     renderPostByType = (type) => {
+        console.log(this.props);
+
         if (type === "text") {
-            return <FeedTextItem />
+            return <FeedTextItem data={this.props.post} />
         } else if (type === "image") {
-            return <FeedImageItem />
+            return <FeedImageItem data={this.props.post} />
         } else if (type === "video") {
-            return <FeedVideoItem />
+            return <FeedVideoItem data={this.props.post} />
         }
     }
 
     render() {
-        const { type } = this.props;
+        const { post } = this.props;
 
         return (
             <div class="row">
-                {this.renderPostByType(type)}
+                {this.renderPostByType(post.type)}
             </div>
 
         )

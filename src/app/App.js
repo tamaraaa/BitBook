@@ -10,11 +10,14 @@ class App extends Component {
     return (
       <React.Fragment>
         <Header />
-        <main>
-          <div className="container">
-            <Feed />
-          </div>
-        </main>
+        <Switch>
+          <main>
+            <div className="container">
+              <Route exact path='/' component={Feed} />
+
+            </div>
+          </main>
+        </Switch>
         <Footer />
       </React.Fragment>
     );

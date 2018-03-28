@@ -10,33 +10,33 @@ export class Feed extends Component {
     }
 
     componentDidMount() {
-        // fetch('http://bitbookapi.azurewebsites.net/api/posts/', {
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         "Key": "Key:bitbook",
-        //         "SessionId": "7A5D8FF8-B04D-4C8C-9812-8B44EB7E4C94"
-        //     }
-        // })
-        //     .then(function (response) {
-        //         // console.log(response);
-        //         return response.json();
-        //     })
-        //     .then(function (myJson) {
-        //         return myJson
-        //     })
-        //     .then((myJson) => {
-        //         this.setState({ posts: myJson })
-        //     });
+        fetch('http://bitbookapi.azurewebsites.net/api/posts/', {
+            headers: {
+                "Content-Type": "application/json",
+                "Key": "bitbook",
+                "SessionId": "7A5D8FF8-B04D-4C8C-9812-8B44EB7E4C94"
+            }
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (myJson) {
+                console.log(myJson);
+                return myJson
+            })
+            .then((myJson) => {
+                this.setState({ posts: myJson })
+            });
+
     }
-
-
     render() {
+        console.log(this.state);
+        if (this.state.posts.length == 0) {
+            return <h1>Nothing in feed</h1>
+        }
         return (
             <div className="container">
-                <h1>Nothing in feed</h1>
-                <FeedItem type="video" />
-                <FeedItem type="image" />
-                <FeedItem type="text" />
+                {this.state.posts.map((post) => <FeedItem key={post.id} post={post} />)}
             </div>
         )
 

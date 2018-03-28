@@ -8,3 +8,8 @@ main {
   flex: 1 0 auto;
 }
 .bla{float: right;}
+iframe{
+  width: 100%;
+  height:500px;
+}
+img{width: 100%}
