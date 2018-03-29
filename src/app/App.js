@@ -5,9 +5,16 @@ import { Footer } from './partials/Footer'
 import { Switch, Route } from "react-router-dom"
 import { Feed } from './Feed'
 import { Button } from './button'
+import {TextModal} from './TextModal'
+import {VideoModal} from './VideoModal'
+import {ImgModal} from './ImgModal'
 
 class App extends Component {
+
+  openModal = () =>{
+    console.log('bla')}
   render() {
+   
     return (
       <React.Fragment>
         <Header />
@@ -19,7 +26,10 @@ class App extends Component {
             </div>
           </main>
         </Switch>
-        <Button />
+        <ImgModal/>
+         <VideoModal/> 
+        <TextModal/>
+        <Button openModal={this.openModal} />
         <Footer />
       </React.Fragment>
     );

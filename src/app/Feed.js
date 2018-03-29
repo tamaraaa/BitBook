@@ -27,7 +27,7 @@ export class Feed extends Component {
             .then((myJson) => {
                 this.setState({ posts: myJson })
             });
-
+           
     }
     render() {
         console.log(this.state);

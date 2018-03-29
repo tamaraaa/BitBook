@@ -5,7 +5,7 @@ export const Header = () => {
     return (
         <header className="container">
 
-            <nav className="col-s12">
+            <nav className="col-s12   teal lighten-2">
 
                 <div className="nav-wrapper">
 
