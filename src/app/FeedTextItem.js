@@ -11,14 +11,14 @@ export class FeedTextItem extends Component {
         const { text } = this.props.data
         const { commentsNum } = this.props.data
         return (
-            <div class="col s12 m12">
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
+            <div className="col s12 m12">
+                <div className="card blue-grey darken-1">
+                    <div className="card-content white-text">
                         {text}
                     </div>
-                    <div class="card-action">
+                    <div className="card-action">
                         <Link to="/PostDetails">Text Posts</Link>
-                        <a href="#" class="bla">Comments:{commentsNum}</a>
+                        <a href="#" className="bla">Comments:{commentsNum}</a>
                     </div>
                 </div>
             </div>

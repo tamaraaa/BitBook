@@ -24,7 +24,7 @@ export class FeedItem extends Component {
         const { post } = this.props;
 
         return (
-            <div class="row">
+            <div className="row">
                 {this.renderPostByType(post.type)}
             </div>
 

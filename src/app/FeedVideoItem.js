@@ -18,14 +18,14 @@ export class FeedVideoItem extends Component {
 
         return (
             <div className="col s12 m12">
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
+                <div className="card blue-grey darken-1">
+                    <div className="card-content white-text">
 
                     </div>
                     <iframe width="100%" src={videoUrl} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
-                    <div class="card-action">
+                    <div className="card-action">
                         <Link to="/PostDetails">Video Posts</Link>
-                        <a href="#" class="bla">Comments :{commentsNum}</a>
+                        <a href="#" className="bla">Comments :{commentsNum}</a>
                     </div>
                 </div>
             </div>

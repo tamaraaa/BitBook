@@ -11,14 +11,14 @@ export class FeedImageItem extends Component {
         const { commentsNum } = this.props.data
         return (
 
-            <div class="col s12 m12 ">
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
+            <div className="col s12 m12 ">
+                <div className="card blue-grey darken-1">
+                    <div className="card-content white-text">
                         <img src={imageUrl} />
                     </div>
-                    <div class="card-action">
+                    <div className="card-action">
                         <Link to="/PostDetails">Image Posts</Link>
-                        <a href="#" class="bla">Comments :  {commentsNum}</a>
+                        <a href="#" className="bla">Comments :  {commentsNum}</a>
                     </div>
                 </div>
             </div>
