@@ -2,9 +2,23 @@ import React, { Component } from 'react';
 import M from "materialize-css"
 import options from "materialize-css"
 export class TextModal extends Component {
+    state = {
+        value: ""
+    }
+
     componentDidMount() {
         var elem = document.querySelector('#textModal');
         var instance = M.Modal.init(elem, options);
+    }
+
+    onInputChange = (event) => {
+        this.setState({ value: event.target.value })
+    }
+
+    onSubmit = (event) => {
+        event.preventDefault();
+
+        this.props.create("text", this.state.value);
     }
 
     render() {
@@ -14,11 +28,11 @@ export class TextModal extends Component {
                     <div className="modal-content">
                         <h4>New text post</h4>
                         <p>
-                            <input type="text" />
+                            <input value={this.state.value} type="text" onChange={this.onInputChange} />
                         </p>
                     </div>
                     <div className="modal-footer">
-                        <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat">POST</a>
+                        <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat" onClick={this.onSubmit}>POST</a>
                     </div>
                 </div>
             </div>

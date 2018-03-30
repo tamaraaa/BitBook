@@ -17,6 +17,10 @@ export class Feed extends Component {
     }
 
     componentDidMount() {
+        this.fetchPosts()
+    }
+
+    fetchPosts = () => {
         fetch('http://bitbookapi.azurewebsites.net/api/posts/', {
             headers: {
                 "Content-Type": "application/json",
@@ -24,17 +28,13 @@ export class Feed extends Component {
                 "SessionId": "7A5D8FF8-B04D-4C8C-9812-8B44EB7E4C94"
             }
         })
-            .then(function (response) {
+            .then((response) => {
                 return response.json();
             })
-            .then(function (myJson) {
-                console.log(myJson);
-                return myJson
-            })
             .then((myJson) => {
+                console.log(myJson);
                 this.setState({ posts: myJson })
-            });
-
+            })
     }
 
     openModal = (type) => {
@@ -47,24 +47,49 @@ export class Feed extends Component {
         }
     }
 
-    render() {
-        if (this.state.posts.length == 0) {
-            return <h1>Nothing in feed</h1>
-        }
+    createPost = (type, body) => {
+        console.log(type, body)
+        fetch('http://bitbookapi.azurewebsites.net/api/TextPosts', {
+            headers: {
+                "Content-Type": "application/json",
+                "Key": "bitbook",
+                "SessionId": "7A5D8FF8-B04D-4C8C-9812-8B44EB7E4C94"
+            })
+            .then((response) => {
+                return response.json();
 
-        return (
-            <main>
-                <div className="container">
-                    {this.state.posts.map((post) => <FeedItem key={post.id} post={post} />)}
+            })
+            .then((Json) => {
+                console.log(Json);
 
-                    <VideoModal />
-                    <ImgModal />
-                    <TextModal />
+            })
 
-
-                    <Button openModal={this.openModal} />
-                </div>
-            </main >
-        )
     }
+
+
+    // send request
+    // fetch all posts again
+}
+
+
+render() {
+    if (this.state.posts.length == 0) {
+        return <h1>Nothing in feed</h1>
+    }
+
+    return (
+        <main>
+            <div className="container">
+                {this.state.posts.map((post) => <FeedItem key={post.id} post={post} />)}
+
+                <VideoModal create={this.createPost} />
+                <ImgModal create={this.createPost} />
+                <TextModal create={this.createPost} />
+
+
+                <Button openModal={this.openModal} />
+            </div>
+        </main >
+    )
+}
 }
