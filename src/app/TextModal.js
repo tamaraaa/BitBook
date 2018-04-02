@@ -19,6 +19,7 @@ export class TextModal extends Component {
         event.preventDefault();
 
         this.props.create("text", this.state.value);
+        this.setState({ value: "" })
     }
 
     render() {
@@ -28,7 +29,7 @@ export class TextModal extends Component {
                     <div className="modal-content">
                         <h4>New text post</h4>
                         <p>
-                            <input value={this.state.value} type="text" onChange={this.onInputChange} />
+                            <input value={this.state.value} type="text" onChange={this.onInputChange} value={this.state.value} />
                         </p>
                     </div>
                     <div className="modal-footer">

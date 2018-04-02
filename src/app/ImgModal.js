@@ -4,7 +4,8 @@ import M from "materialize-css"
 import options from "materialize-css"
 export class ImgModal extends Component {
     state = {
-        value: ""
+        value: "",
+        error: ""
     }
 
     componentDidMount() {
@@ -14,13 +15,17 @@ export class ImgModal extends Component {
 
 
     onInputChange = (event) => {
+
         this.setState({ value: event.target.value })
     }
 
     onSubmit = (event) => {
         event.preventDefault();
+        // if (this.state.value.indexOf('png') === -1) {
 
+        // }
         this.props.create("text", this.state.value);
+        this.setState({ value: "" })
     }
 
 
@@ -31,8 +36,9 @@ export class ImgModal extends Component {
                     <div className="modal-content">
                         <h4>New image post</h4>
                         <p>
-                            <input type="text" value={this.state.value} onChange={this.onInputChange} />
+                            <input type="img" value={this.state.value} onChange={this.onInputChange} value={this.state.value} />
                         </p>
+                        {/* {this.state.error && (<p>{this.state.error}</p>)} */}
                     </div>
                     <div className="modal-footer">
                         <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat" onClick={this.onSubmit}>POST</a>

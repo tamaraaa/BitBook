@@ -20,6 +20,7 @@ export class VideoModal extends Component {
         event.preventDefault();
 
         this.props.create("video", this.state.value);
+        this.setState({ value: "" })
     }
 
     render() {
@@ -29,7 +30,7 @@ export class VideoModal extends Component {
                     <div className="modal-content">
                         <h4>New video post</h4>
                         <p>
-                            <input type="video" value={this.state.value} onChange={this.onInputChange} />
+                            <input type="video" value={this.state.value} onChange={this.onInputChange} value={this.state.value} />
                         </p>
                     </div>
                     <div className="modal-footer">
