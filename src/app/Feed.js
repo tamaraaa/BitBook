@@ -57,89 +57,41 @@ export class Feed extends Component {
             content = {
                 text: body
             }
-            fetch(`http://bitbookapi.azurewebsites.net/api/${postTypeUrl}`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Key": "bitbook",
-                    "SessionId": "7A5D8FF8-B04D-4C8C-9812-8B44EB7E4C94"
-                },
-                body: JSON.stringify(content)
-            })
-
-
-                .then((response) => {
-                    return response.json();
-
-                })
-                .then((successfullyCreated) => {
-                    if (successfullyCreated === true) {
-                        this.fetchPosts();
-                    } else {
-                        console.log("Post creation failed!");
-                    }
-                })
-
         }
         else if (type === "img") {
             postTypeUrl = "ImagePosts";
             content = {
                 imageUrl: body
             }
-            fetch(`http://bitbookapi.azurewebsites.net/api/${postTypeUrl}`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Key": "bitbook",
-                    "SessionId": "7A5D8FF8-B04D-4C8C-9812-8B44EB7E4C94"
-                },
-                body: JSON.stringify(content)
-            })
-
-
-                .then((response) => {
-                    return response.json();
-
-                })
-                .then((successfullyCreated) => {
-                    if (successfullyCreated === true) {
-                        this.fetchPosts();
-                    } else {
-                        console.log("Post creation failed!");
-                    }
-                })
 
         }
-
-        else if (type === "video") {
+        else {
             postTypeUrl = "VideoPosts"
             content = {
                 videoUrl: body
             }
-            fetch(`http://bitbookapi.azurewebsites.net/api/${postTypeUrl}`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Key": "bitbook",
-                    "SessionId": "7A5D8FF8-B04D-4C8C-9812-8B44EB7E4C94"
-                },
-                body: JSON.stringify(content)
-            })
-
-
-                .then((response) => {
-                    return response.json();
-
-                })
-                .then((successfullyCreated) => {
-                    if (successfullyCreated === true) {
-                        this.fetchPosts();
-                    } else {
-                        console.log("Post creation failed!");
-                    }
-                })
-
         }
+
+        fetch(`http://bitbookapi.azurewebsites.net/api/${postTypeUrl}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Key": "bitbook",
+                "SessionId": "7A5D8FF8-B04D-4C8C-9812-8B44EB7E4C94"
+            },
+            body: JSON.stringify(content)
+        })
+            .then((response) => {
+                return response.json();
+
+            })
+            .then((successfullyCreated) => {
+                if (successfullyCreated === true) {
+                    this.fetchPosts();
+                } else {
+                    console.log("Post creation failed!");
+                }
+            })
     }
     render() {
         if (this.state.posts.length == 0) {

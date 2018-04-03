@@ -20,12 +20,16 @@ export class ImgModal extends Component {
     }
 
     onSubmit = (event) => {
-        event.preventDefault();
-        // if (this.state.value.indexOf('png') === -1) {
-
+        // let val = this.state.value
+        // if (val.lastIndexOf(".") === -1) {
+        //     this.setState({ error: "not valid" })
         // }
-        this.props.create("text", this.state.value);
-        this.setState({ value: "" })
+        event.preventDefault();
+        this.props.create("img", this.state.value);
+        this.setState({ value: "", error: "" })
+        console.log(this.state);
+
+
     }
 
 
@@ -38,10 +42,10 @@ export class ImgModal extends Component {
                         <p>
                             <input type="img" value={this.state.value} onChange={this.onInputChange} value={this.state.value} />
                         </p>
-                        {/* {this.state.error && (<p>{this.state.error}</p>)} */}
+                        <p> {this.state.error && <p>{this.state.error}</p>}</p>
                     </div>
                     <div className="modal-footer">
-                        <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat" onClick={this.onSubmit}>POST</a>
+                        <a href="#" className="modal-action modal-close waves-effect waves-green btn-flat" onClick={this.onSubmit}>POST</a>
                     </div>
                 </div>
             </div>
